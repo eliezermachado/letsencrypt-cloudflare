@@ -2,11 +2,6 @@
 
 set -e
 
-# Domínio e email para Let's Encrypt
-DOMAIN="exemplo.com.br"
-EMAIL="seu-emailaqui"
-CLOUDFLARE_API_TOKEN="token_qui"
-
 # Verifica se a API Key está configurada
 if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
     echo "ERRO: Defina a variável CLOUDFLARE_API_TOKEN para usar o DNS da Cloudflare."

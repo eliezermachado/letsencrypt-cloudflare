@@ -1,0 +1,8 @@
+# Ignore arquivos sensíveis e irrelevantes
+.env
+certs/
+__pycache__/
+*.log
+.DS_Store
+*.swp
+*.bak
