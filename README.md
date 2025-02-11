@@ -67,7 +67,7 @@ Você verá os arquivos:
 
 ## 🔄 Renovação Automática
 
-O Let's Encrypt expira em **90 dias**. Para renovar executando novamente o compose:
+O Let's Encrypt expira em **90 dias**. Para renovar execute manualmente o compose:
 
 ```bash
 docker-compose up
