@@ -1,4 +1,14 @@
 #!/bin/sh
+set -e
+
+# Verifica se a API Key está configurada
+if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+    echo "ERRO: Defina a variável CLOUDFLARE_API_TOKEN para usar o DNS da Cloudflare."
+    exit 1
+fi
+echo "dns_cloudflare_api_token = $CLOUDFLARE_API_TOKEN" > /cloudflare.ini
+chmod 600 /cloudflare.ini
+
 echo "✅ Iniciando processo de criação/renovação do certificado para *.$DOMAIN..."
 
 # Caminho do certificado esperado
@@ -21,7 +31,7 @@ fi
 
 # Executa o Certbot para criar ou renovar o certificado
 certbot certonly --dns-cloudflare \
-  --dns-cloudflare-credentials /seu-caminho/cloudflare.ini \
+  --dns-cloudflare-credentials /cloudflare.ini \
   --email "$EMAIL" \
   -d "*.$DOMAIN" \
   --agree-tos \
