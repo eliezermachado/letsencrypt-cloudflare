@@ -50,15 +50,10 @@ docker-compose up --build
 
 Isso gerará automaticamente o certificado e o armazenará em `./certs/live/exemplo.com/`.
 
-### 🛠️ 2. Parar o Contêiner Após Execução
 
-```bash
-docker-compose down
-```
+### 🔑 2. Acessar os Certificados
 
-### 🔑 3. Acessar os Certificados
-
-Depois da execução, os certificados estarão disponíveis na pasta:
+Depois da execução, os certificados estarão disponíveis na pasta (você precisa de permissão de sudo pra acessar os certs):
 
 ```bash
 ls -l certs/live/exemplo.com/
@@ -72,21 +67,21 @@ Você verá os arquivos:
 
 ## 🔄 Renovação Automática
 
-O Let's Encrypt expira em **90 dias**. Para renovar, execute:
+O Let's Encrypt expira em **90 dias**. Para renovar executando novamente o compose:
 
 ```bash
-docker run --rm -v $(pwd)/certs:/etc/letsencrypt certbot-wildcard certbot renew
+docker-compose up
 ```
 
 Ou configure um **cron job** para rodar mensalmente:
 
 ```bash
-0 3 * * 1 docker-compose run --rm certbot certbot renew
+0 3 * * 1 cd /caminho/para/repo && docker-compose up
 ```
 
 ## 🛠️ Debug e Problemas Comuns
 
-1️⃣ **Permissão negada ao acessar `docker.sock`?**
+1️⃣ **Permissão negada ao acessar?**
 
 - Certifique-se de que o usuário do contêiner tem permissão para acessar o Docker.
 
