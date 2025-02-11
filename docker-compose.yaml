@@ -5,9 +5,9 @@ services:
     build: .
     container_name: certbot-wildcard
     environment:
-      - DOMAIN=exemplo.com
-      - EMAIL=admin@exemplo.com
+      - DOMAIN=exemplo.com.br
+      - EMAIL=exemplo@gmail.com
       - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN}
     volumes:
       - ./certs:/etc/letsencrypt
-    restart: unless-stopped
+    restart: no
